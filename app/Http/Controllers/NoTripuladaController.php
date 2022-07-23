@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Nave;
 use App\Models\NoTripulada;
 use Illuminate\Http\Request;
 
@@ -12,74 +13,27 @@ class NoTripuladaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+    public function getNoTripuladas(){
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        $modeloNave = new Nave;
+        $noTripuladas = NoTripulada::all();
+        
+        //Recogiendo los datos del modelo Nave para juntarlo con todos los de su tipo y ponerlos en el API
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\NoTripulada  $noTripulada
-     * @return \Illuminate\Http\Response
-     */
-    public function show(NoTripulada $noTripulada)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\NoTripulada  $noTripulada
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(NoTripulada $noTripulada)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\NoTripulada  $noTripulada
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, NoTripulada $noTripulada)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\NoTripulada  $noTripulada
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(NoTripulada $noTripulada)
-    {
-        //
-    }
+        foreach($noTripuladas as $noTripulada){
+            $nave = $modeloNave-> where('nombre', $noTripulada->nombre_nave)->first(); 
+            $noTripulada -> combustible =  $nave -> combustible;
+            $noTripulada -> funcion =  $nave -> funcion;
+            $noTripulada -> primer_lanzamiento =  $nave -> primer_lanzamiento;
+            $noTripulada -> ultimo_lanzamiento =  $nave -> ultimo_lanzamiento;
+            $noTripulada -> estado =  $nave -> estado;
+            $noTripulada -> pais =  $nave -> pais;
+        }
+        return response()-> json([
+            'status'=> 'ok',
+            'data' => $noTripuladas
+        ]);
+     }
+    
 }

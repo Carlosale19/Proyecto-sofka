@@ -18,6 +18,9 @@ class LanzadoraController extends Controller
 
         $modeloNave = new Nave;
         $lanzadoras = Lanzadora::all();
+        
+        //Recogiendo los datos del modelo Nave para juntarlo con todos los de su tipo y ponerlos en el API
+
         foreach($lanzadoras as $lanzadora){
             $nave = $modeloNave-> where('nombre', $lanzadora->nombre_nave)->first(); 
             $lanzadora -> combustible =  $nave -> combustible;

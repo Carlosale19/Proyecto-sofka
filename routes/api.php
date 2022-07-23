@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NaveController;
 use App\Http\Controllers\LanzadoraController;
+use App\Http\Controllers\TripuladaController;
+use App\Http\Controllers\NoTripuladaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,4 +18,8 @@ use App\Http\Controllers\LanzadoraController;
 |
 */
 
+//Creando las rutas para usar las API
+
 Route::get('get-all-lanzadoras', [LanzadoraController::class, 'getLanzadoras']);
+Route::get('get-all-no-tripuladas', [NoTripuladaController::class, 'getNoTripuladas']);
+Route::get('get-all-tripuladas', [TripuladaController::class, 'getTripuladas']);
