@@ -18,7 +18,7 @@ class TripuladaController extends Controller
         $modeloNave = new Nave;
         $tripuladas = tripulada::all();
         
-        //Recogiendo los datos del modelo Nave para juntarlo con todos los de su tipo y ponerlos en el API
+        //Recogiendo datos y mostrandolos como API
 
         foreach($tripuladas as $tripulada){
             $nave = $modeloNave-> where('nombre', $tripulada->nombre_nave)->first(); 
@@ -36,7 +36,7 @@ class TripuladaController extends Controller
         ]);
     }
 
-    //Guardando tripuladas en la base de dato mediante una api
+    //Guardando tripuladas en la base de dato mediante una api 
     public function setTripuladas(Request $request){
 
         $modeloNave = new Nave;
