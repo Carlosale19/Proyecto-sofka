@@ -29,6 +29,7 @@ class LanzadoraController extends Controller
             $lanzadora -> ultimo_lanzamiento =  $nave -> ultimo_lanzamiento;
             $lanzadora -> estado =  $nave -> estado;
             $lanzadora -> pais =  $nave -> pais;
+            $lanzadora -> tipo =  'Lanzadora';
         }
         return response()-> json([
             'status'=> 'ok',

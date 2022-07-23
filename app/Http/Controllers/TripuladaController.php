@@ -28,6 +28,7 @@ class TripuladaController extends Controller
             $tripulada -> ultimo_lanzamiento =  $nave -> ultimo_lanzamiento;
             $tripulada -> estado =  $nave -> estado;
             $tripulada -> pais =  $nave -> pais;
+            $tripulada -> tipo =  'Tripulada';
         }
         return response()-> json([
             'status'=> 'ok',

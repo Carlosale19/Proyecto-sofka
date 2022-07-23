@@ -29,6 +29,7 @@ class NoTripuladaController extends Controller
             $noTripulada -> ultimo_lanzamiento =  $nave -> ultimo_lanzamiento;
             $noTripulada -> estado =  $nave -> estado;
             $noTripulada -> pais =  $nave -> pais;
+            $noTripulada -> tipo =  'No tripulada';
         }
         return response()-> json([
             'status'=> 'ok',
