@@ -36,4 +36,34 @@ class LanzadoraController extends Controller
             'data' => $lanzadoras
         ]);
      }
+     //Guardando lanzadoras en la base de dato mediante una api
+     public function setLanzadora(Request $request){
+
+        $modeloNave = new Nave;
+        $lanzadora = new Lanzadora;
+        
+        //Guardando primero la nave
+        $modeloNave->nombre = $request -> nombre;
+        $modeloNave->combustible = $request -> combustible;
+        $modeloNave->funcion = $request -> funcion;
+        $modeloNave->primer_lanzamiento = $request -> primer_lanzamiento;
+        $modeloNave->ultimo_lanzamiento = $request -> ultimo_lanzamiento;
+        $modeloNave->estado = $request -> estado;
+        $modeloNave->pais = $request -> pais;
+        $modeloNave->save();
+
+        //Guardando despues el tipo de nave
+        $lanzadora->empuje = $request->empuje;
+        $lanzadora->potencia = $request->potencia;
+        $lanzadora->capacidad_transporte = $request->capacidad_transporte;
+        $lanzadora->altura = $request->altura;
+        $lanzadora->nombre_nave = $request->nombre;
+
+        $lanzadora->save();
+
+        return response()-> json([
+            'status'=> 'ok',
+            
+        ]);
+     }
 }

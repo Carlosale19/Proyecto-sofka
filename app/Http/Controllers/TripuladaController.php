@@ -35,4 +35,34 @@ class TripuladaController extends Controller
             'data' => $tripuladas
         ]);
     }
+
+    //Guardando tripuladas en la base de dato mediante una api
+    public function setTripuladas(Request $request){
+
+        $modeloNave = new Nave;
+        $tripulada = new Tripulada;
+        
+        //Guardando primero la nave
+        $modeloNave->nombre = $request -> nombre;
+        $modeloNave->combustible = $request -> combustible;
+        $modeloNave->funcion = $request -> funcion;
+        $modeloNave->primer_lanzamiento = $request -> primer_lanzamiento;
+        $modeloNave->ultimo_lanzamiento = $request -> ultimo_lanzamiento;
+        $modeloNave->estado = $request -> estado;
+        $modeloNave->pais = $request -> pais;
+        $modeloNave->save();
+
+        //Guardando despues el tipo de nave
+        $tripulada->capacidad_tripulantes = $request->capacidad_tripulantes;
+        $tripulada->peso = $request->peso;
+        $tripulada->km_orbita = $request->km_orbita; 
+        $tripulada->nombre_nave = $request->nombre;
+
+        $tripulada->save();
+
+        return response()-> json([
+            'status'=> 'ok',
+            
+        ]);
+     }
 }

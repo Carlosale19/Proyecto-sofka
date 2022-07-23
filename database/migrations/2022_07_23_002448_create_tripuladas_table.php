@@ -19,6 +19,7 @@ return new class extends Migration
             $table -> float('peso');
             $table -> float('km_orbita');
             $table -> string('nombre_nave');
+            $table->timestamps();
             $table -> foreign('nombre_nave')->references('nombre')->on('naves');
         });
     }

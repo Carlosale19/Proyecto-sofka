@@ -20,6 +20,12 @@ use App\Http\Controllers\NoTripuladaController;
 
 //Creando las rutas para usar las API
 
+//Apis Para mostrar los datos
 Route::get('get-all-lanzadoras', [LanzadoraController::class, 'getLanzadoras']);
 Route::get('get-all-no-tripuladas', [NoTripuladaController::class, 'getNoTripuladas']);
 Route::get('get-all-tripuladas', [TripuladaController::class, 'getTripuladas']);
+
+//Ruta para crear las naves
+Route::post('set-lanzadora', [LanzadoraController::class, 'setLanzadora']);
+Route::post('set-no-tripuladas', [NoTripuladaController::class, 'setNoTriupaladas']);
+Route::post('set-tripuladas', [TripuladaController::class, 'setTripuladas']);

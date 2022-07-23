@@ -20,6 +20,7 @@ return new class extends Migration
             $table -> float('capacidad_transporte');
             $table -> float('altura');
             $table -> string('nombre_nave');
+            $table->timestamps();
             $table -> foreign('nombre_nave')->references('nombre')->on('naves');
         });
     }

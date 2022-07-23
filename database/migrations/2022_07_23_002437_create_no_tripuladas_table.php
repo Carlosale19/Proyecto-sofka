@@ -18,6 +18,7 @@ return new class extends Migration
             $table -> float('velocidad');
             $table -> float('empuje');
             $table -> string('nombre_nave');
+            $table->timestamps();
             $table -> foreign('nombre_nave')->references('nombre')->on('naves');
 
         });

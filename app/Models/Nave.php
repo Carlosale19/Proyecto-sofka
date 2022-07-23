@@ -12,6 +12,8 @@ class Nave extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['nombre'];
+    
     public function NaveLanzadora(){
         return $this->hasOne(Lanzadora::class);
     }

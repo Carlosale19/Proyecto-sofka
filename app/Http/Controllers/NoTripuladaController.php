@@ -37,4 +37,32 @@ class NoTripuladaController extends Controller
         ]);
      }
     
+     //Guardando noTripul$noTripuladas en la base de dato mediante una api
+     public function setNoTriupaladas(Request $request){
+
+        $modeloNave = new Nave;
+        $noTripulada = new NoTripulada;
+        
+        //Guardando primero la nave
+        $modeloNave->nombre = $request -> nombre;
+        $modeloNave->combustible = $request -> combustible;
+        $modeloNave->funcion = $request -> funcion;
+        $modeloNave->primer_lanzamiento = $request -> primer_lanzamiento;
+        $modeloNave->ultimo_lanzamiento = $request -> ultimo_lanzamiento;
+        $modeloNave->estado = $request -> estado;
+        $modeloNave->pais = $request -> pais;
+        $modeloNave->save();
+
+        //Guardando despues el tipo de nave
+        $noTripulada->velocidad = $request->velocidad;
+        $noTripulada->empuje = $request->empuje;
+        $noTripulada->nombre_nave = $request->nombre;
+
+        $noTripulada->save();
+
+        return response()-> json([
+            'status'=> 'ok',
+            
+        ]);
+     }
 }
