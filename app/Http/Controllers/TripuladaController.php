@@ -54,6 +54,7 @@ class TripuladaController extends Controller
 
         //Guardando despues el tipo de nave
         $tripulada->capacidad_tripulantes = $request->capacidad_tripulantes;
+        echo $request->capacidad_tripulantes;die;
         $tripulada->peso = $request->peso;
         $tripulada->km_orbita = $request->km_orbita; 
         $tripulada->nombre_nave = $request->nombre;
